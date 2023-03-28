@@ -2,7 +2,7 @@ package br.com;
 
 import java.util.Date;
 
-public class Usuario {
+public class Usuario implements Comparable<Usuario>{
     private int id;
     private String nome;
     private String email;
@@ -58,8 +58,23 @@ public class Usuario {
         this.dataCadastro = dataCadastro;
     }
 
-    public Usuario(String nome, String senha) {
+    public Usuario(int id, String nome, String senha) {
+        this.id = id;
         this.nome = nome;
         this.senha = senha;
+    }
+
+    @Override
+    public int compareTo(Usuario user) {
+        if (this.getId() < user.getId()){
+            return -1;
+        }
+        if (this.getId() > user.getId()){
+            return 1;
+        }
+        return 0;
+
+
+
     }
 }
